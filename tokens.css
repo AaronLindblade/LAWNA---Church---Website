@@ -1,0 +1,20 @@
+:root {
+  --navy: #101a2c;
+  --navy-light: #14233c;
+  --blue: #183b65;
+
+  --gold: #caac00;
+  --gold-hover: #a18901;
+
+  --white: #ffffff;
+  --text-dark: #333333;
+
+  --button-blue: #1c2448;
+
+  --main-font: Arial, sans-serif;
+  --heading-font: "Cinzel", serif;
+
+  --navbar-height: 90px;
+
+  --logo-size: 75px;
+}

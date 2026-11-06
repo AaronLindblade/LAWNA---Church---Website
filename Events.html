@@ -3,13 +3,243 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Apostolic Church (LAWNA) USA</title>
+    <title>Events | The Apostolic Church (LAWNA) USA</title>
     <link rel="stylesheet" href="tokens.css" />
     <link rel="stylesheet" href="base.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    
+    <!-- Prototype UI/UX Styles for Events Page -->
+    <style>
+      :root {
+        --primary-blue: #003366; 
+        --accent-gold: #D4AF37; 
+        --bg-white: #ffffff;
+        --bg-light: #f4f7f6;
+        --text-dark: #333333;
+        --text-muted: #666666;
+        --border-color: #e0e0e0;
+      }
+
+      /* Hero Section */
+      .events-hero {
+        background-color: var(--primary-blue);
+    
+        background-image: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+        color: var(--bg-white);
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .events-hero h1 {
+        margin: 0;
+        font-size: 3rem;
+        letter-spacing: 1px;
+      }
+
+      .events-hero p {
+        font-size: 1.2rem;
+        margin-top: 15px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+      }
+
+      /* Main Container */
+      .events-container {
+        max-width: 1200px;
+        margin: -40px auto 60px; /* Pulls the content up over the hero section */
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Live Stream Alert Banner */
+      .live-alert {
+        background-color: var(--bg-white);
+        border-left: 6px solid var(--accent-gold);
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .live-alert h3 {
+        margin: 0;
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+      }
+      
+      .live-alert p {
+        margin: 5px 0 0;
+        color: var(--text-muted);
+      }
+
+      .live-btn {
+        background-color: #1877F2; /* Facebook Blue for Live */
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background 0.3s;
+      }
+
+      .live-btn:hover {
+        background-color: #0e5a9e;
+      }
+
+      /* Filter/Tab Navigation (Visual only for prototype) */
+      .events-nav {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .events-nav button {
+        background: transparent;
+        border: 2px solid var(--primary-blue);
+        color: var(--primary-blue);
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .events-nav button.active, .events-nav button:hover {
+        background: var(--primary-blue);
+        color: var(--bg-white);
+      }
+
+      /* Grid Layout */
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      /* Event Card Design */
+      .event-card {
+        background-color: var(--bg-white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .event-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Placeholder image area for the event */
+      .event-image-placeholder {
+        height: 180px;
+        background-color: var(--bg-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-blue);
+        font-size: 3rem;
+        border-bottom: 4px solid var(--accent-gold);
+      }
+
+      .event-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .event-date-badge {
+        display: inline-block;
+        background-color: var(--primary-blue);
+        color: var(--bg-white);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        align-self: flex-start;
+      }
+
+      .event-content h3 {
+        margin: 0 0 10px 0;
+        color: var(--text-dark);
+        font-size: 1.4rem;
+      }
+
+      .event-meta {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .event-meta i {
+        color: var(--primary-blue);
+        width: 20px;
+        text-align: center;
+      }
+
+      .event-actions {
+        margin-top: auto; /* Pushes buttons to bottom */
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--bg-white);
+        text-align: center;
+        padding: 12px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        flex: 1;
+        transition: background 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #002244;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--bg-light);
+      }
+    </style>
   </head>
 
   <body>
@@ -38,6 +268,97 @@
     </header>
 
     <!--Edit Code Here-->
+    <main>
+      <!-- Hero Header -->
+      <section class="events-hero">
+        <h1>Church Events</h1>
+        <p>Stay connected with our community. Find out what's happening at The Apostolic Church Boston.</p>
+      </section>
+
+      <!-- Main Content Area -->
+      <section class="events-container">
+        
+        <!-- Live Stream Callout -->
+        <div class="live-alert">
+          <div>
+            <h3><i class="fas fa-circle" style="color: #d32f2f; font-size: 0.8rem; margin-right: 8px;"></i>Live Service Stream</h3>
+            <p>Join our Sunday service live on Facebook.</p>
+          </div>
+          <a href="#" class="live-btn"><i class="fab fa-facebook"></i> Watch Live Now</a>
+        </div>
+
+        <!-- Filter Buttons (Visual only for prototype) -->
+        <div class="events-nav">
+          <button class="active">All Events</button>
+          <button>This Week</button>
+          <button>This Month</button>
+          <button>Special Services</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid">
+          
+          <!-- Event Card 1 -->
+          <div class="event-card">
+            <div class="event-image-placeholder">
+              <i class="fas fa-church"></i> <!-- Image Placeholder -->
+            </div>
+            <div class="event-content">
+              <span class="event-date-badge">Sunday, Oct 15</span>
+              <h3>Annual Harvest Thanksgiving</h3>
+              <div class="event-meta">
+                <span><i class="fas fa-clock"></i> 10:00 AM - 1:00 PM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Main Sanctuary</span>
+              </div>
+              <div class="event-actions">
+                <a href="#" class="btn-primary">View Details</a>
+                <a href="#" class="btn-secondary"><i class="fas fa-calendar-plus"></i> Add</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event Card 2 -->
+          <div class="event-card">
+            <div class="event-image-placeholder">
+              <i class="fas fa-bible"></i> <!-- Image Placeholder -->
+            </div>
+            <div class="event-content">
+              <span class="event-date-badge">Friday, Oct 20</span>
+              <h3>Youth Bible Study & Fellowship</h3>
+              <div class="event-meta">
+                <span><i class="fas fa-clock"></i> 7:00 PM - 8:30 PM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Fellowship Hall</span>
+              </div>
+              <div class="event-actions">
+                <a href="#" class="btn-primary">View Details</a>
+                <a href="#" class="btn-secondary"><i class="fas fa-calendar-plus"></i> Add</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event Card 3 -->
+          <div class="event-card">
+            <div class="event-image-placeholder">
+              <i class="fas fa-hands-praying"></i> <!-- Image Placeholder -->
+            </div>
+            <div class="event-content">
+              <span class="event-date-badge">Saturday, Oct 28</span>
+              <h3>Community Prayer Walk</h3>
+              <div class="event-meta">
+                <span><i class="fas fa-clock"></i> 9:00 AM - 11:00 AM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Meet at Church Parking Lot</span>
+              </div>
+              <div class="event-actions">
+                <a href="#" class="btn-primary">View Details</a>
+                <a href="#" class="btn-secondary"><i class="fas fa-calendar-plus"></i> Add</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    <!--End of Edit Code-->
 
     <footer>
       <div class="social-icons">

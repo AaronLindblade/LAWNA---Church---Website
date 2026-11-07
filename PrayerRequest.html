@@ -1,55 +1,305 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Apostolic Church (LAWNA) USA</title>
-    <link rel="stylesheet" href="tokens.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayer Request | LAWSA Boston</title>
 
-  <body>
-    <header class="navbar">
-      <button class="menu-button">☰</button>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-      <div class="logo-container">
-        <img src="cac-logo1.png" alt="Church Logo" class="logo" />
-        <a href="Home.html" class="site-name">LAWSA Boston</a>
-      </div>
+  <style>
+    /* Prayer Request Page Styling */
 
-      <nav>
-        <a href="AboutUs.html">About Us</a>
-        <a href="Media.html">Media</a>
-        <a href="Events.html">Events</a>
-        <a href="Planvisit.html">Visit</a>
-      </nav>
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
 
-      <div class="nav-buttons">
-        <a href="Suggestions.html" class="nav-btn">Suggestions</a>
-        <a href="Give.html" class="nav-btn">Give</a>
-        <a href="PrayerRequest.html" class="nav-btn">Prayer Request</a>
-        <a href="Connect.html" class="nav-btn">Login</a>
-        <span class="search">⌕</span>
-      </div>
-    </header>
+    .prayer-page {
+      padding-top: calc(var(--navbar-height) + 20px);
+      padding-bottom: 60px;
+    }
 
-    <!--Edit Code Here-->
+    .page-heading {
+      max-width: 850px;
+      margin: 20px auto 35px;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-    <footer>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:info@lawsaboston.org">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
+    .page-heading h1 {
+      font-family: var(--heading-font);
+      font-size: 38px;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
 
-      <p>© 2026 The Apostolic Church (LAWNA) USA. All Rights Reserved.</p>
-    </footer>
-  </body>
+    .page-heading p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--white);
+    }
+
+    .prayer-section {
+      max-width: 650px;
+      width: 90%;
+      margin: 0 auto 40px;
+      padding: 40px;
+      background-color: var(--white);
+      color: var(--text-dark);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .prayer-section h2 {
+      font-family: var(--heading-font);
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 18px;
+      color: var(--navy);
+    }
+
+    .prayer-section p {
+      text-align: center;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: var(--text-dark);
+    }
+
+    .prayer-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .prayer-form h3 {
+      font-size: 18px;
+      color: var(--navy);
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .prayer-form label {
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .prayer-form input:not([type="checkbox"]),
+    .prayer-form select,
+    .prayer-form textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #c0c0c0;
+      border-radius: 5px;
+      font-family: var(--main-font);
+      font-size: 15px;
+      background-color: var(--white);
+    }
+
+    .prayer-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .prayer-form input:focus,
+    .prayer-form select:focus,
+    .prayer-form textarea:focus {
+      outline: none;
+      border-color: var(--button-blue);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .privacy-option {
+      margin: 10px 0;
+    }
+
+    .privacy-option label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: normal;
+      line-height: 1.5;
+    }
+
+    .privacy-option input {
+      width: auto;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--button-blue);
+      color: var(--white);
+      font-family: var(--main-font);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: var(--gold-hover);
+    }
+
+    .prayer-message {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .prayer-message h2 {
+      font-family: var(--heading-font);
+      color: var(--gold);
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .prayer-message p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .prayer-page {
+        padding-top: 110px;
+        padding-bottom: 40px;
+      }
+
+      .page-heading {
+        padding: 25px 15px;
+      }
+
+      .page-heading h1 {
+        font-size: 30px;
+      }
+
+      .prayer-section {
+        width: 95%;
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <button class="menu-button" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="logo-container">
+      <img src="cac-logo1.png" alt="Church Logo" class="logo">
+      <a href="Home.html" class="site-name">LAWSA Boston</a>
+    </div>
+
+    <nav>
+      <a href="AboutUs.html">About Us</a>
+      <a href="Media.html">Media</a>
+      <a href="Events.html">Events</a>
+      <a href="Planvisit.html">Plan a Visit</a>
+    </nav>
+
+    <div class="nav-buttons">
+      <a href="Suggestions.html" class="nav-btn">Suggestions</a>
+      <a href="Give.html" class="nav-btn">Give</a>
+      <a href="PrayerRequest.html" class="nav-btn">Prayer Request</a>
+      <a href="#" class="nav-btn">Login</a>
+      <span class="search"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="prayer-page">
+
+    <section class="page-heading">
+      <h1>Prayer Request</h1>
+      <p>
+        We believe in the power of prayer. Share your prayer request
+        with us, and our church family will be glad to pray with you.
+      </p>
+    </section>
+
+    <section class="prayer-section">
+      <h2>Share Your Prayer Request</h2>
+      <p>
+        Please complete the form below. You may share as much or as
+        little information as you feel comfortable sharing.
+      </p>
+
+      <form class="prayer-form">
+
+        <label for="prayer-name">Full Name</label>
+        <input type="text" id="prayer-name" name="name"
+               placeholder="Enter your name">
+
+        <label for="prayer-email">Email Address</label>
+        <input type="email" id="prayer-email" name="email"
+               placeholder="Enter your email address">
+
+        <label for="prayer-category">Prayer Request Category</label>
+        <select id="prayer-category" name="category">
+          <option value="general">General Prayer</option>
+          <option value="healing">Healing</option>
+          <option value="family">Family</option>
+          <option value="guidance">Guidance</option>
+          <option value="thanksgiving">Thanksgiving</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="prayer-message">Your Prayer Request</label>
+        <textarea id="prayer-message" name="message"
+                  placeholder="Write your prayer request here..."
+                  required></textarea>
+
+        <div class="privacy-option">
+          <label>
+            <input type="checkbox" name="confidential">
+            Please keep my prayer request confidential.
+          </label>
+        </div>
+
+        <button type="submit" class="submit-button">
+          Submit Prayer Request
+        </button>
+
+      </form>
+    </section>
+
+    <section class="prayer-message">
+      <h2>We Are Here to Pray With You</h2>
+      <p>
+        "Pray without ceasing."
+      </p>
+      <p><strong>1 Thessalonians 5:17 (KJV)</strong></p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="mailto:info@lawsaboston.org" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+
+    <p>&copy; 2026 The Apostolic Church (LAWNA) USA. All Rights Reserved.</p>
+  </footer>
+
+</body>
 </html>

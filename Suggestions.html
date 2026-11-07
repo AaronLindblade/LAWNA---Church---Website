@@ -1,55 +1,280 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Apostolic Church (LAWNA) USA</title>
-    <link rel="stylesheet" href="tokens.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suggestions | LAWSA Boston</title>
 
-  <body>
-    <header class="navbar">
-      <button class="menu-button">☰</button>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-      <div class="logo-container">
-        <img src="cac-logo1.png" alt="Church Logo" class="logo" />
-        <a href="Home.html" class="site-name">LAWSA Boston</a>
-      </div>
+  <style>
+    /* Suggestions Page Styling */
 
-      <nav>
-        <a href="AboutUs.html">About Us</a>
-        <a href="Media.html">Media</a>
-        <a href="Events.html">Events</a>
-        <a href="Planvisit.html">Visit</a>
-      </nav>
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
 
-      <div class="nav-buttons">
-        <a href="Suggestions.html" class="nav-btn">Suggestions</a>
-        <a href="Give.html" class="nav-btn">Give</a>
-        <a href="PrayerRequest.html" class="nav-btn">Prayer Request</a>
-        <a href="Connect.html" class="nav-btn">Login</a>
-        <span class="search">⌕</span>
-      </div>
-    </header>
+    .suggestions-page {
+      padding-top: calc(var(--navbar-height) + 20px);
+      padding-bottom: 60px;
+    }
 
-    <!--Edit Code Here-->
+    .page-heading {
+      max-width: 850px;
+      margin: 20px auto 35px;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-    <footer>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:info@lawsaboston.org">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
+    .page-heading h1 {
+      font-family: var(--heading-font);
+      font-size: 38px;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
 
-      <p>© 2026 The Apostolic Church (LAWNA) USA. All Rights Reserved.</p>
-    </footer>
-  </body>
+    .page-heading p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--white);
+    }
+
+    .suggestions-section {
+      max-width: 650px;
+      width: 90%;
+      margin: 0 auto 40px;
+      padding: 40px;
+      background-color: var(--white);
+      color: var(--text-dark);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .suggestions-section h2 {
+      font-family: var(--heading-font);
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 18px;
+      color: var(--navy);
+    }
+
+    .suggestions-section p {
+      text-align: center;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: var(--text-dark);
+    }
+
+    .suggestions-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .suggestions-form h3 {
+      font-size: 18px;
+      color: var(--navy);
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .suggestions-form label {
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .suggestions-form input,
+    .suggestions-form select,
+    .suggestions-form textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #c0c0c0;
+      border-radius: 5px;
+      font-family: var(--main-font);
+      font-size: 15px;
+      background-color: var(--white);
+    }
+
+    .suggestions-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .suggestions-form input:focus,
+    .suggestions-form select:focus,
+    .suggestions-form textarea:focus {
+      outline: none;
+      border-color: var(--button-blue);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--button-blue);
+      color: var(--white);
+      font-family: var(--main-font);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: var(--gold-hover);
+    }
+
+    .suggestions-message {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .suggestions-message h2 {
+      font-family: var(--heading-font);
+      color: var(--gold);
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .suggestions-message p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .suggestions-page {
+        padding-top: 110px;
+        padding-bottom: 40px;
+      }
+
+      .page-heading {
+        padding: 25px 15px;
+      }
+
+      .page-heading h1 {
+        font-size: 30px;
+      }
+
+      .suggestions-section {
+        width: 95%;
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <button class="menu-button" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="logo-container">
+      <img src="cac-logo1.png" alt="Church Logo" class="logo">
+      <a href="Home.html" class="site-name">LAWSA Boston</a>
+    </div>
+
+    <nav>
+      <a href="AboutUs.html">About Us</a>
+      <a href="Media.html">Media</a>
+      <a href="Events.html">Events</a>
+      <a href="Planvisit.html">Plan a Visit</a>
+    </nav>
+
+    <div class="nav-buttons">
+      <a href="Suggestions.html" class="nav-btn">Suggestions</a>
+      <a href="Give.html" class="nav-btn">Give</a>
+      <a href="PrayerRequest.html" class="nav-btn">Prayer Request</a>
+      <a href="#" class="nav-btn">Login</a>
+      <span class="search"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="suggestions-page">
+
+    <section class="page-heading">
+      <h1>Suggestions</h1>
+      <p>
+        We value your feedback and ideas. Your suggestions can help
+        us improve our church website, services, and community.
+      </p>
+    </section>
+
+    <section class="suggestions-section">
+      <h2>Share Your Suggestions</h2>
+      <p>
+        Please use the form below to share your thoughts, ideas,
+        or recommendations with us.
+      </p>
+
+      <form class="suggestions-form">
+
+        <label for="suggestion-name">Full Name</label>
+        <input type="text" id="suggestion-name" name="name"
+               placeholder="Enter your name">
+
+        <label for="suggestion-email">Email Address</label>
+        <input type="email" id="suggestion-email" name="email"
+               placeholder="Enter your email address">
+
+        <label for="suggestion-category">Suggestion Category</label>
+        <select id="suggestion-category" name="category">
+          <option value="website">Website</option>
+          <option value="events">Church Events</option>
+          <option value="services">Church Services</option>
+          <option value="ministries">Ministries</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="suggestion-message">Your Suggestion</label>
+        <textarea id="suggestion-message" name="message"
+                  placeholder="Write your suggestion here..."
+                  required></textarea>
+
+        <button type="submit" class="submit-button">
+          Submit Suggestion
+        </button>
+
+      </form>
+    </section>
+
+    <section class="suggestions-message">
+      <h2>Thank You for Your Feedback</h2>
+      <p>
+        We appreciate you taking the time to help us improve.
+        Your feedback is valuable to our church community.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="mailto:info@lawsaboston.org" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+
+    <p>&copy; 2026 The Apostolic Church (LAWNA) USA. All Rights Reserved.</p>
+  </footer>
+
+</body>
 </html>
